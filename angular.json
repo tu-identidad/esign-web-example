@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": []
           },
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "E-Signature"
+    }
+  },
+  "defaultProject": "E-Signature",
+  "cli": {
+    "analytics": "b1d1141d-39f4-40f1-93ee-f302fd20644c"
+  }
 }
