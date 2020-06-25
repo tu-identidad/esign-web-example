@@ -10,9 +10,8 @@ import { SignaturePadService } from '../signature-pad.service';
 export class SignaturePadComponent implements OnInit, AfterViewInit {
   @ViewChild('sPad', {static: true}) signaturePadElement;
   
-  constructor(sendSign: SignaturePadService) { 
- 
-
+  constructor(public sendSign: SignaturePadService) { 
+    //sendSign.sendSignature(this.identifier,this.name,this.firstName,this.lastName,this.rfc,this.email,this.showSignature);
   }
   //Variables params
   signaturePad: any;
@@ -24,10 +23,10 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
   email = null;
   document = null;
   showSignature = null;
-  imageSignature = null;
 
 
   ngOnInit(): void {
+    
   }
 
   ngAfterViewInit(): void {
@@ -83,23 +82,29 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
     } else {
       const dataURL = this.signaturePad.toDataURL();
     //this.download(dataURL, 'signature.png');
-  //Get base 64 image
-      var imageBase64 = dataURL;
-    }
-  }
-  //Method to save image in format JPG
-  saveJPG() {
-    if (this.signaturePad.isEmpty()) {
-      alert('Please provide a signature first.');
-    } else {
-      const dataURL = this.signaturePad.toDataURL('image/jpeg');
-      this.download(dataURL, 'signature.jpg');
+    //Get base 64 image
+      var imageSignature = dataURL;
+      var cutImage = imageSignature.substr(22,);
+      var cutDocument = this.document.substr(28,);
+      
+      this.sendSign.sendSignature(this.identifier,this.name,this.firstName,this.lastName,this.rfc,this.email,this.showSignature,cutDocument,cutImage);
+      
     }
   }
 
-
-
-
-
+  changeListener($event) : void {
+    this.readThis($event.target);
+  }
+  
+  readThis(inputValue: any): void {
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this.document = myReader.result;
+    }
+    myReader.readAsDataURL(file);
+  }
+ 
 }
 

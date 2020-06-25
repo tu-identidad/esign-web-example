@@ -1,5 +1,5 @@
 <section class="container">
-    <h1 class="text-center">Enter your Signature</h1>
+    <h1 class="text-center">Digital Signature - Tuidentidad</h1>
     <div class="row">
       <div class="col-6">
         <div class="signature-pad">
@@ -21,12 +21,14 @@
         <br>
         <input id="email" class="form-control" placeholder="E-mail" type="text" [(ngModel)]="email" >
         <br>
-        <input id="document" class="form-control" placeholder="Documento" type="text" [(ngModel)]="document" >
-        <br>
         <input id="showSignature" class="form-control" placeholder="Show Signature" type="text" [(ngModel)]="showSignature" >
         <br>
-        <input id="imageSignature" class="form-control" placeholder="Image Signature" type="text" [(ngModel)]="imageSignature" >
+        
+        
+        <input id="document"  type="file"   (change)="changeListener($event)">
         <br>
+        
+        
         <button class="btn btn-block btn-success" (click)="savePNG()">Send</button>
           <button class="btn btn-block btn-warning" (click)="undo()">Undo</button>
           <button class="btn btn-block btn-secondary" (click)="clear()">Clear</button>
