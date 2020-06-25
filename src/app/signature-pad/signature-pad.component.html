@@ -9,6 +9,24 @@
         </div>
       </div>
       <div class="col-6">
+        <input id="identifier" class="form-control" placeholder="Identifier" type="text" [(ngModel)]="identifier" >
+        <br>
+        <input id="name" class="form-control" placeholder="Name" type="text" [(ngModel)]="name" >
+        <br>
+        <input id="firstName" class="form-control" placeholder="First Name" type="text" [(ngModel)]="firstName" >
+        <br>
+        <input id="lastName" class="form-control" placeholder="Last Name" type="text" [(ngModel)]="lastName" >
+        <br>
+        <input id="rfc" class="form-control" placeholder="RFC" type="text" [(ngModel)]="rfc" >
+        <br>
+        <input id="email" class="form-control" placeholder="E-mail" type="text" [(ngModel)]="email" >
+        <br>
+        <input id="document" class="form-control" placeholder="Documento" type="text" [(ngModel)]="document" >
+        <br>
+        <input id="showSignature" class="form-control" placeholder="Show Signature" type="text" [(ngModel)]="showSignature" >
+        <br>
+        <input id="imageSignature" class="form-control" placeholder="Image Signature" type="text" [(ngModel)]="imageSignature" >
+        <br>
         <button class="btn btn-block btn-success" (click)="savePNG()">Send</button>
           <button class="btn btn-block btn-warning" (click)="undo()">Undo</button>
           <button class="btn btn-block btn-secondary" (click)="clear()">Clear</button>

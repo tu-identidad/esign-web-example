@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import SignaturePad from 'signature_pad';
+import { SignaturePadService } from '../signature-pad.service';
 
 @Component({
   selector: 'app-signature-pad',
@@ -8,8 +9,23 @@ import SignaturePad from 'signature_pad';
 })
 export class SignaturePadComponent implements OnInit, AfterViewInit {
   @ViewChild('sPad', {static: true}) signaturePadElement;
+  
+  constructor(sendSign: SignaturePadService) { 
+ 
+
+  }
+  //Variables params
   signaturePad: any;
-  constructor() { }
+  identifier =  null;
+  name = null;
+  firstName = null;
+  lastName = null;
+  rfc = null;
+  email = null;
+  document = null;
+  showSignature = null;
+  imageSignature = null;
+
 
   ngOnInit(): void {
   }
@@ -66,10 +82,9 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
       alert('Please provide a signature first.');
     } else {
       const dataURL = this.signaturePad.toDataURL();
-      this.download(dataURL, 'signature.png');
+    //this.download(dataURL, 'signature.png');
   //Get base 64 image
       var imageBase64 = dataURL;
-      alert(imageBase64);
     }
   }
   //Method to save image in format JPG
@@ -81,5 +96,10 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
       this.download(dataURL, 'signature.jpg');
     }
   }
+
+
+
+
+
 }
 
