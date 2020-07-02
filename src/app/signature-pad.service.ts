@@ -8,9 +8,9 @@ export class SignaturePadService {
   constructor() { }
 
   axios = require('axios');
-   sendSignature(identifier,name,firstName,lastName,rfc,email,document,showSignature,imageSignature,){
+   sendSignature(identifier,name,firstName,lastName,rfc,email,document,showSignature,imageSignature){
     this.axios({
-      headers: {"ApiKey": "vh2Q0pO4"},
+      headers: {"ApiKey": "your apikey"},
       method: 'post',
       url: '/api/ESign/addSignatory',
       data:{
@@ -23,7 +23,12 @@ export class SignaturePadService {
         "document":document,
         "showSignature":showSignature,
         "imageSignature":imageSignature
-       }})
+       }}).then(function (response){
+         console.log(response);
+       })
+       .catch(function (error){
+         console.log(error)
+       })
   }
 
 }

@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import SignaturePad from 'signature_pad';
 import { SignaturePadService } from '../signature-pad.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signature-pad',
@@ -9,10 +10,10 @@ import { SignaturePadService } from '../signature-pad.service';
 })
 export class SignaturePadComponent implements OnInit, AfterViewInit {
   @ViewChild('sPad', {static: true}) signaturePadElement;
-  
-  constructor(public sendSign: SignaturePadService) { 
-    //sendSign.sendSignature(this.identifier,this.name,this.firstName,this.lastName,this.rfc,this.email,this.showSignature);
+  constructor(public sendSign: SignaturePadService, public sanitizer: DomSanitizer) { 
+    
   }
+  
   //Variables params
   signaturePad: any;
   identifier =  null;
@@ -23,7 +24,7 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
   email = null;
   document = null;
   showSignature = null;
-
+  cutDocument = null;
 
   ngOnInit(): void {
     
@@ -64,7 +65,6 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
   }
 
   dataURLToBlob(dataURL) {
-    // Code taken from https://github.com/ebidel/filer.js
     const parts = dataURL.split(';base64,');
     const contentType = parts[0].split(':')[1];
     const raw = window.atob(parts[1]);
@@ -85,15 +85,15 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
     //Get base 64 image
       var imageSignature = dataURL;
       var cutImage = imageSignature.substr(22,);
-      var cutDocument = this.document.substr(28,);
-      
-      this.sendSign.sendSignature(this.identifier,this.name,this.firstName,this.lastName,this.rfc,this.email,this.showSignature,cutDocument,cutImage);
+      this.cutDocument = this.document.substr(28,);
+      this.sendSign.sendSignature(this.identifier,this.name,this.firstName,this.lastName,this.rfc,this.email,this.showSignature,this.cutDocument,cutImage);
       
     }
   }
 
   changeListener($event) : void {
     this.readThis($event.target);
+
   }
   
   readThis(inputValue: any): void {
@@ -104,7 +104,16 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
       this.document = myReader.result;
     }
     myReader.readAsDataURL(file);
+
   }
+
+
+
+  
+
+ 
+
+
  
 }
 

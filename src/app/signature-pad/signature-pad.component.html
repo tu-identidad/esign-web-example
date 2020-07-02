@@ -1,37 +1,26 @@
 <section class="container">
-    <h1 class="text-center">Digital Signature - Tuidentidad</h1>
     <div class="row">
-      <div class="col-6">
+      <div class="col-8">
+        <ng2-pdfjs-viewer pdfSrc="../assets/Example.pdf"></ng2-pdfjs-viewer>
         <div class="signature-pad">
           <div class="signature-pad--body">
-            <canvas #sPad width="500" height="500" style="touch-action: none;"></canvas>
+            <canvas #sPad width="900" height="100" style="touch-action: none;"></canvas>
           </div>
-        </div>
+        </div><br>
       </div>
-      <div class="col-6">
-        <input id="identifier" class="form-control" placeholder="Identifier" type="text" [(ngModel)]="identifier" >
+      <div class="col-4"><br>
+        <input id="identifier" class="form-control" placeholder="Identifier" type="text" [(ngModel)]="identifier"><br>
+        <input id="name" class="form-control" placeholder="Name" type="text" [(ngModel)]="name" ><br>
+        <input id="firstName" class="form-control" placeholder="First Name" type="text" [(ngModel)]="firstName" ><br>
+        <input id="lastName" class="form-control" placeholder="Last Name" type="text" [(ngModel)]="lastName" ><br>
+        <input id="rfc" class="form-control" placeholder="RFC" type="text" [(ngModel)]="rfc" ><br>
+        <input id="email" class="form-control" placeholder="E-mail" type="text" [(ngModel)]="email"><br>
+        <input id="showSignature" class="form-control" placeholder="Show Signature" type="text" [(ngModel)]="showSignature" ><br>
+        <input id="document"  type="file"   (change)="changeListener($event)"><br>
         <br>
-        <input id="name" class="form-control" placeholder="Name" type="text" [(ngModel)]="name" >
-        <br>
-        <input id="firstName" class="form-control" placeholder="First Name" type="text" [(ngModel)]="firstName" >
-        <br>
-        <input id="lastName" class="form-control" placeholder="Last Name" type="text" [(ngModel)]="lastName" >
-        <br>
-        <input id="rfc" class="form-control" placeholder="RFC" type="text" [(ngModel)]="rfc" >
-        <br>
-        <input id="email" class="form-control" placeholder="E-mail" type="text" [(ngModel)]="email" >
-        <br>
-        <input id="showSignature" class="form-control" placeholder="Show Signature" type="text" [(ngModel)]="showSignature" >
-        <br>
-        
-        
-        <input id="document"  type="file"   (change)="changeListener($event)">
-        <br>
-        
-        
-        <button class="btn btn-block btn-success" (click)="savePNG()">Send</button>
-          <button class="btn btn-block btn-warning" (click)="undo()">Undo</button>
-          <button class="btn btn-block btn-secondary" (click)="clear()">Clear</button>
+        <button class="btn btn-block btn-outline-info" (click)="savePNG()">Send</button>
+          <button class="btn btn-block btn-outline-secondary" (click)="undo()">Undo</button>
+          <button class="btn btn-block btn-outline-dark" (click)="clear()">Clear</button><br>
       </div>
     </div>
   </section>

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4599 --proxy-config proxy.conf.json", 
+    "start": "ng serve --port 4599 --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,6 +23,8 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
+    "ng2-pdfjs-viewer": "^5.0.7",
+    "pdfobject": "^2.1.1",
     "rxjs": "~6.5.4",
     "signature_pad": "^3.0.0-beta.3",
     "tslib": "^1.10.0",
