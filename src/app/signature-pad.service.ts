@@ -8,9 +8,9 @@ export class SignaturePadService {
   constructor() { }
 
   axios = require('axios');
-   sendSignature(identifier,name,firstName,lastName,rfc,email,document,showSignature,imageSignature){
+   sendSignature(identifier,name,firstName,lastName,rfc,email,showSignature,document,imageSignature){
     this.axios({
-      headers: {"ApiKey": "your apikey"},
+      headers: {"ApiKey": "XXXXXX"},
       method: 'post',
       url: '/api/ESign/addSignatory',
       data:{

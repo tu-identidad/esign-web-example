@@ -81,6 +81,8 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
       alert('Please provide a signature first.');
     } else {
       const dataURL = this.signaturePad.toDataURL();
+      console.log(dataURL);
+      console.log(this.document);
     //this.download(dataURL, 'signature.png');
     //Get base 64 image
       var imageSignature = dataURL;
@@ -101,6 +103,7 @@ export class SignaturePadComponent implements OnInit, AfterViewInit {
     var myReader:FileReader = new FileReader();
   
     myReader.onloadend = (e) => {
+      console.log('LoadEnd' + e);
       this.document = myReader.result;
     }
     myReader.readAsDataURL(file);

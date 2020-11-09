@@ -1,6 +1,6 @@
 {  
     "/api/*": {  
-       "target": "http://dev.tuidentidad.com/api",  
+       "target": "https://web-prod01.tuidentidad.com/api",  
        "secure": false,
        "changeOrigin": true,
        "logLevel": "debug",
